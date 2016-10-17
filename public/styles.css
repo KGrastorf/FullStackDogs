@@ -1,0 +1,37 @@
+body {
+  background-image: url("http://1.bp.blogspot.com/-bvv4LUoj_PQ/UODbUSSVBNI/AAAAAAAAEAc/24D7fApzK1c/s1600/theclashlondoncalling.jpg");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  margin: 0 0 0 0;
+}
+
+.title {
+  text-align: center;
+  color: red;
+  text-shadow: 1px 1px white;
+}
+
+.get {
+  display: flex;
+  justify-content: center;
+}
+
+#display {
+  color: red;
+  text-shadow: 1px 1px white;
+}
+ .input {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+ }
+
+ input {
+     width: 43%;
+     border: 2px solid red;
+     border-radius: 4px;
+ }
+
+ button {
+   background-color: red;
+ }

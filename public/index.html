@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="guitNodeApp">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Guitar Picker</title>
+  </head>
+  <body ng-controller="mainCtrl">
+    <div id="container">
+      <div id="left" style="float: left; width: 50vw; height: 100vh;">
+
+        <div style="height: 50px;"></div>
+
+      </div>
+      <div id="right" style="float: right; background-color: #fff; width: 50vw; height: 100vh;">
+        <h1 class="title">Which guitar would you like to smash?</h1>
+
+
+        <!-- <div class="row" id="display" style="height: 50px;">Axes Display Here
+
+        </div>
+        <div class="input">
+          <form class="input" ng-submit="addAx(thingguit)">
+          <input type="input" name="name" placeholder="Ax Name">
+          <input type="input" name="name" placeholder="Ax Brand">
+          <button type="submit" name="button">Smash Guitar!</button>
+        </form>
+        </div> -->
+
+        <div class="display">
+
+            <h1>Guitars to Smash!</h1>
+            <form ng-submit="addAx(thingguit)">
+                <input ng-model="thingguit.name" placeholder="Pick your guitar name.">
+                <input ng-model="thingguit.brand" placeholder="Pick your guitar brand.">
+                <input type="submit">
+
+            </form>
+
+            <br />
+            <div ng-repeat="axes in guit | orderBy: thing | filter: filterer">
+                <h3 class="box">
+                  <button type="button" ng-click="deleteAx(guit)">X</button>
+                  <form ng-submit="changeAx(guit)">
+                    <input ng-show="focused" type="text" ng-model="axes.name">
+                  </form>
+                  <span ng-hide="focused" ng-dblclick="focused=true" >{{axes.name}}</span>
+                  <!-- <button type="button" ng-click="changeAx(guit)" ng-show="focused">Update</button> -->
+                  <form ng-submit="changeAx(guit)">
+                    <input ng-show="focused" type="text" ng-model="axes.brand">
+                  </form>
+                  <span ng-hide="focused" ng-dblclick="focused=true" >{{axes.brand}}</span>
+                  <button type="button" ng-click="changeAx(guit)" ng-show="focused">Update</button>
+                </h3>
+            </div>
+        </div>
+      </div>
+      <div style="float: clear;"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="mainCtrl.js"></script>
+    <script src="mainServ.js"></script>
+  </body>
+</html>

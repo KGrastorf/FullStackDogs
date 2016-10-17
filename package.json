@@ -1,0 +1,24 @@
+{
+  "name": "guitars",
+  "version": "1.0.0",
+  "description": "guitar picker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KGrastorf/FullStackDogs.git"
+  },
+  "author": "Kevin Grastorf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KGrastorf/FullStackDogs/issues"
+  },
+  "homepage": "https://github.com/KGrastorf/FullStackDogs#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0"
+  }
+}
