@@ -12,7 +12,6 @@ angular.module("guitNodeApp")
   $scope.showAx();
 
   $scope.addAx = function(guit) {
-      console.log(guit);
       var addObj = {
            name: guit.name,
            brand: guit.brand

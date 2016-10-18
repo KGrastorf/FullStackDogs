@@ -18,6 +18,7 @@ app.post('/ax', function(req, res){
   res.send(axList);
 });
 app.put('/ax/:id', function(req, res){
+  console.log(req);
   for(var i = 0; i < axList.length; i++) {
     if(axList[i].key == req.params.id){
       axList[i] = req.body;
@@ -26,6 +27,7 @@ app.put('/ax/:id', function(req, res){
   res.send(axList);
 });
 app.delete('/ax/:id', function(req, res){
+  console.log(req);
   for(var i = 0; i < axList.length; i++) {
     if(axList[i].key == req.params.id) {
       axList.splice(i,1);

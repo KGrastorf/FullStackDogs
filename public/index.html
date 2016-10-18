@@ -40,17 +40,17 @@
             <br />
             <div ng-repeat="axes in guit | orderBy: thing | filter: filterer">
                 <h3 class="box">
-                  <button type="button" ng-click="deleteAx(guit)">X</button>
-                  <form ng-submit="changeAx(guit)">
+                  <button type="button" ng-click="deleteAx(axes)">X</button>
+                  <form ng-submit="changeAx(axes)">
                     <input ng-show="focused" type="text" ng-model="axes.name">
                   </form>
                   <span ng-hide="focused" ng-dblclick="focused=true" >{{axes.name}}</span>
                   <!-- <button type="button" ng-click="changeAx(guit)" ng-show="focused">Update</button> -->
-                  <form ng-submit="changeAx(guit)">
+                  <form ng-submit="changeAx(axes)">
                     <input ng-show="focused" type="text" ng-model="axes.brand">
                   </form>
                   <span ng-hide="focused" ng-dblclick="focused=true" >{{axes.brand}}</span>
-                  <button type="button" ng-click="changeAx(guit)" ng-show="focused">Update</button>
+                  <button type="button" ng-click="changeAx(axes)" ng-show="focused">Update</button>
                 </h3>
             </div>
         </div>
