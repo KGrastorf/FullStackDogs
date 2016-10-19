@@ -5,7 +5,6 @@ angular.module("guitNodeApp")
           method: "GET",
           url: "/ax"
       }).then(function(response) {
-          console.log(response);
           return response.data;
       });
   };
@@ -24,7 +23,7 @@ angular.module("guitNodeApp")
   this.changeAx = function(guit) {
       return $http({
           method: "PUT",
-          url: "/ax/" + guit.key,
+          url: "/ax/" + guit._id,
           data: guit
   }).then(function(response) {
           return response;
@@ -34,7 +33,7 @@ angular.module("guitNodeApp")
   this.deleteAx = function(guit) {
       return $http({
           method: "DELETE",
-          url: "/ax/" + guit.key
+          url: "/ax/" + guit._id
   }).then(function(response) {
           return response;
       });

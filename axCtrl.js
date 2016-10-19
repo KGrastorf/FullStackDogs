@@ -1,30 +1,57 @@
-var axList = require('./axList.js');
+var mongojs = require("mongojs");
+var ObjectId = require("mongodb").ObjectId;
+
+var db = mongojs('axdb', ['axinfo']);
 
 module.exports = {
-  create: function(req, res){
-    req.body.key = Math.floor(Math.random()*100000000000000);
-    axList.push(req.body);
-    res.send(axList);
-  },
-  read: function(req, res){
-    res.send(axList);
-  },
-  update: function(req, res){
-    console.log(req);
-    for(var i = 0; i < axList.length; i++) {
-      if(axList[i].key == req.params.id){
-        axList[i] = req.body;
+    create: function(req, res) {
+        db.axinfo.insert(req.body, function(err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        });
+    },
+    read: function(req, res) {
+        db.axinfo.find({}, function(err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        });
+    },
+    update: function(req, res){
+    var obj = {};
+    for(var prop in req.body){
+      if(prop != '_id'){
+        obj[prop] = req.body[prop];
       }
     }
-    res.send(axList);
-  },
-  delete: function(req, res){
-    console.log(req);
-    for(var i = 0; i < axList.length; i++) {
-      if(axList[i].key == req.params.id) {
-        axList.splice(i,1);
+    var id = ObjectId(req.params.id);
+    var newObj = {
+      query: {_id: id},
+      update: {$set: obj},
+      new: false
+    };
+    db.axinfo.findAndModify(newObj, function(err, result){
+      if(err){
+        res.send(err);
+      } else {
+        res.send(result);
       }
+    });
+  },
+    delete: function(req, res) {
+        db.axinfo.remove({
+            _id: ObjectId(req.params.id)
+        }, function(err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        });
     }
-    res.send(axList);
-  }
 };

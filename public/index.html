@@ -7,45 +7,30 @@
   </head>
   <body ng-controller="mainCtrl">
     <div id="container">
-      <div id="left" style="float: left; width: 50vw; height: 100vh;">
+      <div id="left" style="float: left; width: 45vw; height: 100vh;">
 
         <div style="height: 50px;"></div>
 
       </div>
-      <div id="right" style="float: right; background-color: #fff; width: 50vw; height: 100vh;">
+      <div id="right" style="float: right; background-color: #000; width: 45vw; height: 100vh;">
         <h1 class="title">Which guitar would you like to smash?</h1>
-
-
-        <!-- <div class="row" id="display" style="height: 50px;">Axes Display Here
-
-        </div>
-        <div class="input">
-          <form class="input" ng-submit="addAx(thingguit)">
-          <input type="input" name="name" placeholder="Ax Name">
-          <input type="input" name="name" placeholder="Ax Brand">
-          <button type="submit" name="button">Smash Guitar!</button>
-        </form>
-        </div> -->
 
         <div class="display">
 
-            <h1>Guitars to Smash!</h1>
+            <h1 class="title">Guitars to Smash!</h1>
             <form ng-submit="addAx(thingguit)">
                 <input ng-model="thingguit.name" placeholder="Pick your guitar name.">
                 <input ng-model="thingguit.brand" placeholder="Pick your guitar brand.">
                 <input type="submit">
-
             </form>
-
             <br />
-            <div ng-repeat="axes in guit | orderBy: thing | filter: filterer">
+            <div class="flex" ng-repeat="axes in guit | orderBy: thing | filter: filterer">
                 <h3 class="box">
                   <button type="button" ng-click="deleteAx(axes)">X</button>
                   <form ng-submit="changeAx(axes)">
                     <input ng-show="focused" type="text" ng-model="axes.name">
                   </form>
                   <span ng-hide="focused" ng-dblclick="focused=true" >{{axes.name}}</span>
-                  <!-- <button type="button" ng-click="changeAx(guit)" ng-show="focused">Update</button> -->
                   <form ng-submit="changeAx(axes)">
                     <input ng-show="focused" type="text" ng-model="axes.brand">
                   </form>
