@@ -1,40 +1,29 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var session = require('express-session');
 var axList = require('./axList.js');
+
+
+var axCtrl = require('./axCtrl.js');
+var userCtrl = require('./userCtrl.js');
+var config = require("./config.js");
+
 var app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(session(config));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/ax', function(req, res){
-  res.send(axList);
-});
-app.post('/ax', function(req, res){
-  req.body.key = axList[axList.length - 1].key + 1;
-  axList.push(req.body);
-  res.send(axList);
-});
-app.put('/ax/:id', function(req, res){
-  console.log(req);
-  for(var i = 0; i < axList.length; i++) {
-    if(axList[i].key == req.params.id){
-      axList[i] = req.body;
-    }
-  }
-  res.send(axList);
-});
-app.delete('/ax/:id', function(req, res){
-  console.log(req);
-  for(var i = 0; i < axList.length; i++) {
-    if(axList[i].key == req.params.id) {
-      axList.splice(i,1);
-    }
-  }
-  res.send(axList);
-});
+
+app.get('/ax', axCtrl.read);
+app.post('/ax', axCtrl.create);
+app.put('/ax/:id', axCtrl.update);
+app.delete('/ax/:id', axCtrl.delete);
+
+app.post('/login', userCtrl.login);
 
 app.listen(3000, function(){
   console.log("listening to 3000");
